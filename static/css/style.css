@@ -1,0 +1,23 @@
+body{
+	font-family: 'Lato', sans-serif;
+}
+.navbar-custom{
+	min-height: 50px;
+    background-color: white;
+    color:#000;
+    border-radius:0;
+    border-color: #ccc;
+}
+.navbar-brand {
+  padding: 0px;
+}
+.navbar-brand>img {
+  height: 100%;
+  padding: 7px 15px;
+  width: auto;
+}
+
+
+.full_width {
+    width: 100%!important
+}

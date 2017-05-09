@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+
+{% load staticfiles %}
+
+
+<html>
+	<head>
+		<title>KLU15: Find & Share notes and tutorials.</title>
+		<!-- Latest compiled and minified CSS -->
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+			<!-- Optional theme -->
+			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
+				<!-- Latest compiled and minified JavaScript -->
+				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+				<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
+					<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+				</head>
+				<nav class="navbar navbar-custom">
+					<div class="container">
+						<!-- Brand and toggle get grouped for better mobile display -->
+						<div class="navbar-header">
+							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+								<span class="sr-only">Toggle navigation</span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+								<span class="icon-bar"></span>
+							</button>
+							<a class="navbar-brand" href="">
+								<img src="{% static "images/black.png" %}">
+								</a>
+							</div>
+						</div>
+					</nav>
+					<body>
+						<div class="container">
+							<h2 class="text-center">Find & Share notes and tutorials online with your friends.</h2>
+						</br>
+						<div class="row">
+							<div class="col-md-8 col-md-offset-2">
+								<div>
+                                 {% if category %}
+
+                                     <h3>{{ category.name }}</h3>
+
+                                    {% if pages %}
+
+                                     <table class="table table-striped">
+                                       <thead>
+                                         <tr>
+                                             <th>File Name</th>
+                                             <th>Download Link</th>
+                                             <th>Category</th>
+                                         </tr>
+                                        </thead>
+                                         <tbody>
+                                          <tr>
+                                          {% for page in pages %}
+                                            <td>{{ page.title }}</td>
+                                              <td><a href="{{ page.url }}">Download</a> </td>
+                                                <td>{{ category.name }}</td>
+                                          {% endfor %}
+                                          </tr>
+                                         </tbody>
+                                        </table>
+
+                                        {% else %}
+
+									<strong>There are no categories</strong>
+
+                                    {% endif %}
+
+                                     {% else %}
+
+                                         <strong> The specified category does not exist</strong>
+
+                                     {% endif %}
+
+								</div>
+							</div>
+						</div>
+						<div class="alert alert-info" role="alert">
+							<h5 class="text-center">
+								<strong>Welcome to KLU15.</strong>
+							</h5>
+							<p class="text-center">Subscribe to our mailing service to be notified as soon as there is something new uploaded here.</p>
+						</div>
+
+					</div>
+					<div class="navbar navbar-default navbar-fixed-bottom">
+						<div class="container">
+							<ul class="list-inline navbar-text pull-left">
+								<li>
+									<a href="">About Us</a>
+								</li>
+								<li>
+									<a href="">Help & FAQ</a>
+								</li>
+								<li>
+									<a href="">Contact Us</a>
+								</li>
+							</ul>
+							<a href="https://www.facebook.com/groups/klu15/" class="navbar-btn btn-primary btn pull-right">Get in touch on Facebook</a>
+						</div>
+					</div>
+				</body>
+			</html>
