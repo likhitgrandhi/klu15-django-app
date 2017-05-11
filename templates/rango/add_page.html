@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+
+
+<html>
+	<head>
+		<title>KLU15: Find & Share notes and tutorials.</title>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+		</head>
+		<nav class="navbar navbar-custom">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="">
+						<img src="{% static "images/black.png" %}">
+						</a>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href="#" data-toggle="modal" data-target="#myModal1">+ Post Notes/Tutorial</a>
+							</li>
+							<li>
+								<a href="#" data-toggle="modal" data-target="#myModal2">+ Add a Category</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<body>
+              <div>
+		{% if category %}
+
+             <div class="container">
+
+            <div class="col-md-6 col-md-offset-3">
+
+        <h3>Add a Link to {{category.name}}</h3>
+            <p class="text-center">Paste the link/tutorial link below.</p>
+
+        <form id="page_form" method="post" action="/rango/category/{{ category.slug }}/add_page/">
+
+            {% csrf_token %}
+             {{ form|crispy }}
+            <input class="btn btn-default" type="submit" value="Add Link">
+        </form>
+
+		{% else %}
+			The specified category does not exist!
+		{% endif%}
+
+
+
+		</div>
+                  </div>
+
+              </div>
+
+            </body>
+</html>

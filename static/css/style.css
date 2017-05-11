@@ -16,8 +16,16 @@ body{
   padding: 7px 15px;
   width: auto;
 }
-
-
 .full_width {
     width: 100%!important
 }
+.modal {padding:0!important}
+
+.modal .modal-body {
+ height: 100vh;
+width: 100vh;
+overflow-y: auto;
+}
+
+.modal-boy {background-color: white}
+.modal {background-color:white}

@@ -1,86 +1,124 @@
 <!DOCTYPE html>
-
+{% load crispy_forms_tags %}
 {% load staticfiles %}
+
 
 
 <html>
 	<head>
 		<title>KLU15: Find & Share notes and tutorials.</title>
-		<!-- Latest compiled and minified CSS -->
-		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
-			<!-- Optional theme -->
-			<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap-theme.min.css" integrity="sha384-rHyoN1iRsVXV4nD0JutlnGaslCJuC7uwjduW9SVrLvRYooPp2bWYgmgJQIXwl/Sp" crossorigin="anonymous">
-				<!-- Latest compiled and minified JavaScript -->
-				<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
-				<link href="https://fonts.googleapis.com/css?family=Lato" rel="stylesheet">
-					<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
-				</head>
-				<nav class="navbar navbar-custom">
-					<div class="container">
-						<!-- Brand and toggle get grouped for better mobile display -->
-						<div class="navbar-header">
-							<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-								<span class="sr-only">Toggle navigation</span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-								<span class="icon-bar"></span>
-							</button>
-							<a class="navbar-brand" href="">
-								<img src="{% static "images/black.png" %}">
-								</a>
-							</div>
-						</div>
-					</nav>
-					<body>
-						<div class="container">
-							<h2 class="text-center">Find & Share notes and tutorials online with your friends.</h2>
-						</br>
-						<div class="row">
-							<div class="col-md-8 col-md-offset-2">
-								<div>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+			<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			<link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+		</head>
+		<nav class="navbar navbar-custom">
+			<div class="container">
+				<!-- Brand and toggle get grouped for better mobile display -->
+				<div class="navbar-header">
+					<button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
+						<span class="sr-only">Toggle navigation</span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+						<span class="icon-bar"></span>
+					</button>
+					<a class="navbar-brand" href="">
+						<img src="{% static "images/black.png" %}">
+						</a>
+					</div>
+					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+							<li>
+								<a href="#" data-toggle="modal" data-target="#myModal1">+ Post Notes/Tutorial</a>
+							</li>
+							<li>
+								<a href="#" data-toggle="modal" data-target="#myModal2">+ Add a Category</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+			</nav>
+			<body>
+				<div class="container">
+					<h2 class="text-center">Find & Share notes and tutorials online with your friends.</h2>
+				</br>
+				<div class="row">
+					<div class="col-md-8 col-md-offset-2">
+						<div>
                                  {% if categories %}
 
                                      {% for category in categories %}
-    
-									<div class="panel panel-default">
 
-                                        <div class="panel-body"><a href="/rango/category/{{ category.slug }}">{{ category.name }}</a></div>
 
-									</div>
+							<div class="panel panel-default">
+								<div class="panel-body">
+									<a href="/rango/category/{{ category.slug }}">{{ category.name }}</a>
+								</div>
+							</div>
 
                                       {% endfor %}
 
                                      {% else %}
- 
-									<strong>There are no categories</strong>
-                                    {% endif %}
- 
-								</div>
-							</div>
-						</div>
-						<div class="alert alert-info" role="alert">
-							<h5 class="text-center">
-								<strong>Welcome to KLU15.</strong>
-							</h5>
-							<p class="text-center">Subscribe to our mailing service to be notified as soon as there is something new uploaded here.</p>
-						</div>
 
-					</div>
-					<div class="navbar navbar-default navbar-fixed-bottom">
-						<div class="container">
-							<ul class="list-inline navbar-text pull-left">
-								<li>
-									<a href="">About Us</a>
-								</li>
-								<li>
-									<a href="">Help & FAQ</a>
-								</li>
-								<li>
-									<a href="">Contact Us</a>
-								</li>
-							</ul>
-							<a href="https://www.facebook.com/groups/klu15/" class="navbar-btn btn-primary btn pull-right">Get in touch on Facebook</a>
+
+							<strong>There are no categories</strong>
+                                    {% endif %}
+
+
 						</div>
 					</div>
-				</body>
-			</html>
+				</div>
+				<div class="alert alert-info" role="alert">
+					<h5 class="text-center">
+						<strong>Welcome to KLU15.</strong>
+					</h5>
+					<p class="text-center">Subscribe to our mailing service to be notified as soon as there is something new uploaded here.</p>
+				</div>
+			</div>
+			<div class="navbar navbar-default navbar-fixed-bottom">
+				<div class="container">
+					<ul class="list-inline navbar-text pull-left">
+						<li>
+							<a href="">About Us</a>
+						</li>
+						<li>
+							<a href="">Help & FAQ</a>
+						</li>
+						<li>
+							<a href="">Contact Us</a>
+						</li>
+					</ul>
+					<a href="https://www.facebook.com/groups/klu15/" class="navbar-btn btn-primary btn pull-right">Get in touch on Facebook</a>
+				</div>
+			</div>
+
+            <div class="modal fade" id="myModal2" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+             <div class="container">
+               <h3 class="text-center">Create a Category</h3>
+                 <p class="text-center">Enter the category you want to create.</p>
+                    <div class="col-md-6 col-md-offset-3">
+                       <form method="POST" action=" ">{% csrf_token %}
+                            {{ form|crispy }}
+                    <input class="btn btn-default" type="submit" value="submit">
+                </form>
+              </div>
+             </div>
+            </div>
+
+            <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+ <div class="container">
+        <h3 class="text-center">Submit a Link/Tutorial </h3>
+        <p class="text-center">Paste the lin/tutorial link below.</p>
+            <div class="col-md-6 col-md-offset-3">
+                <form method="POST" action=" ">{% csrf_token %}
+              {{ form|crispy }}
+                    <input class="btn btn-default" type="submit" value="submit">
+                </form>
+    </div>
+</div>
+            </div>
+
+
+
+		</body>
+	</html>

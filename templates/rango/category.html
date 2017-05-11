@@ -29,6 +29,11 @@
 								<img src="{% static "images/black.png" %}">
 								</a>
 							</div>
+                        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+						<ul class="nav navbar-nav navbar-right">
+                            <li><a href="{% url 'add_page' category.slug %}">Add a Page</a> </li>
+                        </ul>
+                        </div>
 						</div>
 					</nav>
 					<body>
@@ -52,15 +57,15 @@
                                              <th>Category</th>
                                          </tr>
                                         </thead>
+                                          {% for page in pages %}
                                          <tbody>
                                           <tr>
-                                          {% for page in pages %}
                                             <td>{{ page.title }}</td>
                                               <td><a href="{{ page.url }}">Download</a> </td>
                                                 <td>{{ category.name }}</td>
-                                          {% endfor %}
                                           </tr>
                                          </tbody>
+                                     {% endfor %}
                                         </table>
 
                                         {% else %}
