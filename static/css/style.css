@@ -10,10 +10,11 @@ body{
 }
 .navbar-brand {
   padding: 0px;
+
 }
 .navbar-brand>img {
   height: 100%;
-  padding: 7px 15px;
+  padding: 0px 15px;
   width: auto;
 }
 .full_width {
