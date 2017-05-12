@@ -28,47 +28,26 @@
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
-                             {% if user.is_authenticated %}
-                            <li><a href="{% url 'add_page' category.slug %}">Add a Page</a> </li>
-                             <li><a href="#">{{ user.get_username }}</a></li>
-                                <li><a href="/rango/logout">Logout</a> </li>
-                           {% else %}
-                            <li>
-								<a href="/rango/login">Login</a>
-							</li>
-                            {% endif %}
+
 						</ul>
 					</div>
 				</div>
 			</nav>
 			<body>
-              <div>
-		{% if category %}
-
-             <div class="container">
+                 <div class="container">
 
             <div class="col-md-6 col-md-offset-3">
+            <h3 class="text-center">Everything that you always wanted it to be.</h3>
+                <p class="text-center">Login to gain complete access.</p>
+  <form method="post">
+    {% csrf_token %}
+    {{ form|crispy }}
+    <button type="submit">Login</button>
+  </form>
 
-        <h3>Add a Link to {{category.name}}</h3>
-            <p class="text-center">Paste the link/tutorial link below.</p>
+            </div>
+                 </div>
 
-        <form id="page_form" method="post" action="/rango/category/{{ category.slug }}/add_page/">
-
-            {% csrf_token %}
-             {{ form|crispy }}
-            <input class="btn btn-default" type="submit" value="Add Link">
-        </form>
-
-		{% else %}
-			The specified category does not exist!
-		{% endif%}
-
-
-
-		</div>
-                  </div>
-
-              </div>
 
             </body>
 </html>

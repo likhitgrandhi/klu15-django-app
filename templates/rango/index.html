@@ -28,12 +28,17 @@
 					</div>
 					<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
-							<li>
-								<a href="#" data-toggle="modal" data-target="#myModal1">+ Post Notes/Tutorial</a>
-							</li>
-							<li>
+                            {% if user.is_authenticated %}
+                                <li>
 								<a href="#" data-toggle="modal" data-target="#myModal2">+ Add a Category</a>
 							</li>
+                                <li><a href="#">{{ user.get_username }}</a></li>
+                                <li><a href="/rango/logout">Logout</a> </li>
+                            {% else %}
+                            <li>
+								<a href="/rango/login">Login</a>
+							</li>
+                            {% endif %}
 						</ul>
 					</div>
 				</div>
@@ -104,20 +109,6 @@
               </div>
              </div>
             </div>
-
-            <div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
- <div class="container">
-        <h3 class="text-center">Submit a Link/Tutorial </h3>
-        <p class="text-center">Paste the lin/tutorial link below.</p>
-            <div class="col-md-6 col-md-offset-3">
-                <form method="POST" action=" ">{% csrf_token %}
-              {{ form|crispy }}
-                    <input class="btn btn-default" type="submit" value="submit">
-                </form>
-    </div>
-</div>
-            </div>
-
 
 
 		</body>

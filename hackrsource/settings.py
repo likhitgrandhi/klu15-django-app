@@ -120,4 +120,8 @@ STATICFILES_DIRS = [STATIC_DIR, ]
 
 STATIC_URL = '/static/'
 
+LOGIN_REDIRECT_URL = '/rango/'
+
+LOGOUT_REDIRECT_URL = '/rango/'
+
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

@@ -31,8 +31,16 @@
 							</div>
                         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
 						<ul class="nav navbar-nav navbar-right">
+                            {% if user.is_authenticated %}
                             <li><a href="{% url 'add_page' category.slug %}">Add a Page</a> </li>
+                             <li><a href="#">{{ user.get_username }}</a></li>
+                                <li><a href="/rango/logout">Logout</a> </li>
                         </ul>
+                           {% else %}
+                            <li>
+								<a href="/rango/login">Login</a>
+							</li>
+                            {% endif %}
                         </div>
 						</div>
 					</nav>
