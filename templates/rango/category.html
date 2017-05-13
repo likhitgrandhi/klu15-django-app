@@ -2,6 +2,7 @@
 {% load crispy_forms_tags %}
 {% load staticfiles %}
 
+{% block link_block %}<a href="{% url 'add_page' category.slug %}">+ Add a Link</a>{% endblock %}
 
 {% block body_block %}
 						<div class="container">

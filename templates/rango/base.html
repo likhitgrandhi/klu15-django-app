@@ -47,7 +47,9 @@
             <ul class="nav navbar-nav navbar-right">
                 {% if user.is_authenticated %}
                 <li>
+                {% block link_block %}
                     <a href="#" data-toggle="modal" data-target="#myModal2">+ Add a Category</a>
+                {% endblock %}
                 </li>
                 <li><a href="#">{{ user.get_username }}</a>
                 </li>
