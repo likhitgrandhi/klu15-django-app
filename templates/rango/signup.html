@@ -2,13 +2,13 @@
 {% load crispy_forms_tags %}
 {% load staticfiles %}
 
-
 {% block body_block %}
                  <div class="container">
 
             <div class="col-md-6 col-md-offset-3">
-                <h2 class="text-center">Login into KLU15</h2>
-            <p class="text-center">once logged in, you can post and share notes and lectures with your friends.</p>
+                <h1>Join hackrsource</h1>
+                <h3>Cus world is a big family, we gotta help eachother.</h3></br>
+                <h4><strong>Create your personal account now.</strong></h4>
   <form method="post">
     {% csrf_token %}
     {{ form|crispy }}

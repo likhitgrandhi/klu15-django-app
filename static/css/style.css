@@ -1,16 +1,42 @@
 body{
-	font-family: 'Lato', sans-serif;
+	font-family: 'Roboto', sans-serif;
+    overflow-y: scroll;
+
 }
 .navbar-custom{
-	min-height: 50px;
-    background-color: white;
+    font-family: 'Roboto', sans-serif;
+    font-size: 16px;
+    font-weight: 700;
+    padding-top: 10px;
+	min-height: 75px;
+    background-color: #24292E;
     color:#000;
     border-radius:0;
-    border-color: #ccc;
 }
 
 .navbar-default .navbar-toggle .icon-bar {
-    background-color: black;
+    background-color: white;
+    color: white;
+}
+
+.nav > li > a:link{
+    background-color:#24292E;
+    color: #cccccc;
+}
+
+.nav > li > a:visited{
+    background-color:#24292E;
+    color: #ffffff;
+}
+
+.nav > li > a:hover{
+    background-color:#24292E;
+    color: #ffffff;
+}
+
+.nav > li > a:active{
+    background-color:#24292E;
+    color: #ffffff;
 }
 
 .navbar-brand {
