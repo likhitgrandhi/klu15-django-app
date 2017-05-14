@@ -3,6 +3,8 @@ from __future__ import unicode_literals
 from django.db import models
 from django.contrib import admin
 from django.template.defaultfilters import slugify
+from urlparse import urlparse
+from os.path import splitext, basename
 
 
 # Create your models here.
@@ -33,3 +35,4 @@ class Page(models.Model):
 
 class PageAdmin(admin.ModelAdmin):
     list_display = ('title', 'category', 'url')
+

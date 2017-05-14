@@ -3,19 +3,26 @@
 {% load staticfiles %}
 
 {% block body_block %}
+    <div class="wrapper">
                  <div class="container">
-
-            <div class="col-md-6 col-md-offset-3">
-                <h1>Join hackrsource</h1>
-                <h3>Cus world is a big family, we gotta help eachother.</h3></br>
-                <h4><strong>Create your personal account now.</strong></h4>
+<div class="row">
+    <div class="col-xs-12 col-sm-6 col-lg-6">
+        <div class="img-container">
+        <img src="{% static "images/klulogo.png" %}" height="250px" width="250px">
+    </div>
+    </div>
+    <div class="col-xs-12 col-sm-6 col-lg-6">
+        <h2>Join KLU15</h2>
+            <h4><strong>A massive online community of KLU.</strong></h4></br>
   <form method="post">
     {% csrf_token %}
     {{ form|crispy }}
     <button type="submit">Login</button>
   </form>
+    </div>
+  </div>
 
-            </div>
                  </div>
+    </div>
 
 {% endblock %}

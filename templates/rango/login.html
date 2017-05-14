@@ -4,18 +4,26 @@
 
 
 {% block body_block %}
+    <div class="wrapper">
                  <div class="container">
-
-            <div class="col-md-6 col-md-offset-3">
-                <h2 class="text-center">Login into KLU15</h2>
-            <p class="text-center">once logged in, you can post and share notes and lectures with your friends.</p>
+<div class="row">
+    <div class="col-xs-7 col-sm-6 col-lg-6">
+        <div class="img-container">
+        <img src="{% static "images/klulogo.png" %}" height="250px" width="250px">
+    </div>
+    </div>
+    <div class="col-xs-5 col-sm-6 col-lg-6">
+        <h2>Login into KLU15</h2>
+        <h4><strong>A massive online community of KLU.</strong></h4></br>
   <form method="post">
     {% csrf_token %}
     {{ form|crispy }}
     <button type="submit">Login</button>
   </form>
+    </div>
+  </div>
 
-            </div>
                  </div>
+    </div>
 
 {% endblock %}

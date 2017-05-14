@@ -41,7 +41,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand" href="/rango/">
-                <img src="{% static "images/hackrwhite.png" %}">
+                <img src="{% static "images/black.png" %}">
             </a>
         </div>
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -56,6 +56,9 @@
                 </li>
                 <li><a href="/rango/logout">Logout</a> </li>
                 {% else %}
+                    <li>
+                    <a href="#">Notice-Board</a>
+                </li>
                 <li>
                     <a href="/rango/login">Login</a>
                 </li>
