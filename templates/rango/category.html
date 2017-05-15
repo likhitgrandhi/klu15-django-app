@@ -6,35 +6,47 @@
 
 {% block body_block %}
 						<div class="container">
-							<h2 class="text-center">Find & Share notes and tutorials online with your friends.</h2>
 						</br>
 						<div class="row">
 							<div class="col-md-8 col-md-offset-2">
 								<div>
                                  {% if category %}
 
-                                     <h3>{{ category.name }}</h3>
+                                     <h3>{{ category.name }}</h3></br>
 
                                     {% if pages %}
 
-                                     <table class="table table-striped">
-                                       <thead>
-                                         <tr>
-                                             <th>File Name</th>
-                                             <th>Download Link</th>
-                                             <th>Category</th>
-                                         </tr>
-                                        </thead>
                                           {% for page in pages %}
-                                         <tbody>
-                                          <tr>
-                                            <td>{{ page.title }}</td>
-                                              <td><a href="{{ page.url }}">Download</a> </td>
-                                                <td>{{ category.name }}</td>
-                                          </tr>
-                                         </tbody>
+                                         <div class="panel panel-default">
+  <div class="panel-body">
+  <div class="wrapper">
+    <div class="row">
+    <div class="col-lg-2 col-xs-2">
+    <center>
+    <div style="font-size: 24px; color:#aa2200;">
+<span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+    </div>
+    </center>
+    </div>
+    <div class="col-lg-8 col-xs-8">
+<h4>{{ page.title }}</h4>
+    </div>
+    <div class="col-lg-2 col-xs-2">
+    <center>
+    <div style="font-size: 24px;">
+        <a href="{{ page.url }}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
+    </div>
+    </center>
+    </div>
+  </div>
+</div>
+
+
+</div>
+
+</div>
                                      {% endfor %}
-                                        </table>
+
 
                                         {% else %}
 
@@ -51,12 +63,7 @@
 								</div>
 							</div>
 						</div>
-						<div class="alert alert-info" role="alert">
-							<h5 class="text-center">
-								<strong>Welcome to KLU15.</strong>
-							</h5>
-							<p class="text-center">Subscribe to our mailing service to be notified as soon as there is something new uploaded here.</p>
-						</div>
+
 
 					</div>
 					<div class="navbar navbar-default navbar-fixed-bottom">
@@ -77,3 +84,4 @@
 					</div>
 
 {% endblock %}
+
