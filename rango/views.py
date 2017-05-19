@@ -1,12 +1,11 @@
 from django.http import HttpResponse
-from django.shortcuts import render
-from rango.models import Category
-from rango.models import Page
-from rango.forms import CategoryForm, PageForm
+from rango.models import *
+from rango.forms import *
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.contrib.auth import login, authenticate
 from django.contrib.auth.forms import UserCreationForm
 from django.shortcuts import render, redirect
-
 
 
 def signup(request):
@@ -24,11 +23,11 @@ def signup(request):
     return render(request, 'rango/signup.html', {'form': form})
 
 
-
 def index(request):
-    category_list = Category.objects.all()
+
+    course_list = Course.objects.filter(department__studentprofile__user=request.user.pk)
     form = CategoryForm()
-    context_dict = {'categories': category_list, 'form': form}
+    context_dict = {'courses': course_list, 'form': form}
 
     if request.method == 'POST':
         form = CategoryForm(request.POST)
@@ -80,6 +79,14 @@ def add_page(request, category_name_slug):
         else:
             print(form.errors)
 
-    context_dict = {'form':form, 'category': category}
+    context_dict = {'form': form, 'category': category}
 
     return render(request, 'rango/add_page.html', context_dict)
+
+
+def show_notices(request):
+    category_list = Category.objects.all()
+    notices_list = Noticeboard.objects.all()
+    context_dict = {'notices': notices_list, 'categories': category_list}
+
+    return render(request, 'rango/noticeboard.html', context_dict)

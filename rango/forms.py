@@ -1,5 +1,9 @@
 from django import forms
-from rango.models import Category, Page
+from rango.models import Category, Page, Noticeboard
+from rango.choices import *
+
+
+
 class CategoryForm(forms.ModelForm):
     name = forms.CharField(max_length=128, help_text="Enter the category name.")
     slug = forms.CharField(widget=forms.HiddenInput(), required=False)
@@ -28,3 +32,11 @@ class PageForm(forms.ModelForm):
     class Meta:
         model = Page
         exclude = ('category',)
+
+
+class NoticeboardForm(forms.ModelForm):
+    notice = forms.CharField(max_length=500, help_text="Enter the notice to be posted here.")
+
+    class Meta:
+        model = Noticeboard
+        fields = ('notice',)

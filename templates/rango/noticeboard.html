@@ -1,0 +1,42 @@
+{% extends 'rango/base.html' %}
+{% load crispy_forms_tags %}
+{% load staticfiles %}
+
+
+    {% block body_block %}
+				<div class="container">
+                <div class="row">
+                    <div class="col-md-3 col-md-offset-0">
+                    <h4>Departments</h4>
+                        <hr>
+                        <ul style="list-style-type:disc; margin: 0; padding: 0;">
+                            {% if categories %}
+                                {% for category in categories %}
+                            <a href="/rango/category/{{ category.slug }}"><li>{{ category.name }}</li></a>
+  {% endfor %}
+
+                                     {% else %}
+
+                                </ul>
+                    <strong>no categories</strong>
+
+{% endif %}
+                    </div>
+                    <div class="col-md-8 col-md-offset-0">
+                        <h4>Top Stories in campus for you.</h4><hr>
+                    <div class="notices">
+                        <ul style="list-style-type: none;">
+                            {% if notices %}
+                            {% for Noticeboard in notices %}
+                            <li>{{ Noticeboard.notice }}</li>
+                                <hr>
+                            {% endfor %}
+                        {% else %}
+                        </ul>
+                    <strong>thers nothing for now!</strong>
+                    {% endif %}
+                    </div>
+                </div>
+                </div>
+                </div>
+                        {% endblock %}
