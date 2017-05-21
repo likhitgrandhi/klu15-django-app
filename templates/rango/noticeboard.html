@@ -1,42 +1,70 @@
 {% extends 'rango/base.html' %}
 {% load crispy_forms_tags %}
 {% load staticfiles %}
+{% load app_filters %}
 
+{% block styles %}
+            <link rel="stylesheet" type="text/css" href="{% static "css/cover.css" %}" />
+{% endblock %}
 
     {% block body_block %}
-				<div class="container">
-                <div class="row">
-                    <div class="col-md-3 col-md-offset-0">
-                    <h4>Departments</h4>
-                        <hr>
-                        <ul style="list-style-type:disc; margin: 0; padding: 0;">
-                            {% if categories %}
-                                {% for category in categories %}
-                            <a href="/rango/category/{{ category.slug }}"><li>{{ category.name }}</li></a>
-  {% endfor %}
-
-                                     {% else %}
-
-                                </ul>
-                    <strong>no categories</strong>
-
-{% endif %}
-                    </div>
-                    <div class="col-md-8 col-md-offset-0">
-                        <h4>Top Stories in campus for you.</h4><hr>
-                    <div class="notices">
-                        <ul style="list-style-type: none;">
-                            {% if notices %}
-                            {% for Noticeboard in notices %}
-                            <li>{{ Noticeboard.notice }}</li>
-                                <hr>
-                            {% endfor %}
+<div style="margin-top: 15px; margin-bottom: 15px;" class="container">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="list-group">
+                <div class="list-group-item">
+                    <h4 class="list-group-item-heading"><a href="#" class="text-gray-dark">{{ user.get_username }}</a></h4>
+                    <p class="list-group-item-text"><a href="/@likhitgrandhi" class="text-muted">@ {{ user.get_username }}</a>
+                    </p>
+                </div>
+                {% if students %}
+                 {% for studentprofile in students %}
+                     <div class="list-group-item"><a href="/@likhitgrandhi"><small style="display: block;" class="text-muted">COLLEGE ID</small><strong>{{ studentprofile.registration_id }}</strong></a><a href="/@likhitgrandhi/followings"><small style="display: block; padding-top: 5px;" class="text-muted">DEPARTMENT</small><strong>{{ studentprofile.department }}</strong></a>
+                </div>
+                {% endfor %}
+            {% endif %}
+            </div>
+        </div>
+        <div class="col-md-6">
+            <ul class="list-group">
+                <li class="list-group-item">
+                   <form method="POST" action="/rango/noticeboard/">
+                       {% csrf_token %}
+                  {{ form|crispy}}
+                    <input class="btn btn-default" type="submit" name="submit">
+                        <div class="clearfix"></div>
+                    </form>
+                </li>
+                {% if notices %}
+                            {% for noticeboard in notices %}
+                <li class="list-group-item">
+                    <p class="list-group-item-heading"><a href="#" class="text-gray-dark"><strong>{{ noticeboard.user.username }}</strong><span>&nbsp;</span><span class="text-muted">@ {{ noticeboard.user.username }}</span></a><span>&nbsp;-&nbsp;</span><a href="#"><span class="text-muted">{{ noticeboard.creation_date|timesince }}</span></a>
+                    </p>
+                    <p style="word-wrap: break-word;" class="list-group-item-text">{{ noticeboard.notice }}
+                </li>
+               {% endfor %}
                         {% else %}
-                        </ul>
-                    <strong>thers nothing for now!</strong>
-                    {% endif %}
-                    </div>
-                </div>
-                </div>
-                </div>
+              <strong>thers nothing for now!</strong>
+              {% endif %}
+            </ul>
+            <nav>
+                <ul class="pager"></ul>
+            </nav>
+        </div>
+        <div class="col-md-3">
+            <ul class="list-group">
+                <li class="list-group-item">
+                    <p style="margin-bottom: 0;" class="lead">Enrolled Courses</p><a href="#">View all</a>
+                  {% if courses %}
+                            {% for course in courses %}
+                    <li class="list-group-item"><a href="@pandian" class="text-gray-dark"><strong>{{ course.course_name }}</strong><span>&nbsp;</span></a>
+                    </li>
+                {% endfor %}
+            {% endif %}
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>
+
                         {% endblock %}

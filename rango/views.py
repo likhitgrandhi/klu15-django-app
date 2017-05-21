@@ -23,8 +23,8 @@ def signup(request):
     return render(request, 'rango/signup.html', {'form': form})
 
 
+@login_required(login_url='/rango/login')
 def index(request):
-
     course_list = Course.objects.filter(department__studentprofile__user=request.user.pk)
     form = CategoryForm()
     context_dict = {'courses': course_list, 'form': form}
@@ -84,9 +84,22 @@ def add_page(request, category_name_slug):
     return render(request, 'rango/add_page.html', context_dict)
 
 
+@login_required(login_url='/rango/login')
 def show_notices(request):
-    category_list = Category.objects.all()
-    notices_list = Noticeboard.objects.all()
-    context_dict = {'notices': notices_list, 'categories': category_list}
+    form = NoticeboardForm()
+    course_list = Course.objects.filter(department__studentprofile__user=request.user.pk)
+    student = StudentProfile.objects.filter(department__studentprofile__user=request.user.pk)
+    notice_list = Noticeboard.objects.all()
+    context_dict = {'notices': notice_list, 'form': form, 'username': request.user.username, 'courses': course_list, 'students': student}
+
+    if request.method == 'POST':
+        form = NoticeboardForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = request.user
+            form.save()
+            return redirect("/rango/noticeboard/")
+        else:
+            print(form.errors)
 
     return render(request, 'rango/noticeboard.html', context_dict)

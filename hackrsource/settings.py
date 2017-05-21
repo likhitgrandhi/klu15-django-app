@@ -125,6 +125,7 @@ STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/rango/'
 
+
 LOGOUT_REDIRECT_URL = '/rango/'
 
 CRISPY_TEMPLATE_PACK = 'bootstrap3'

@@ -2,44 +2,27 @@
 {% load crispy_forms_tags %}
 {% load staticfiles %}
 
+   {% block styles %}
+         <link rel="stylesheet" type="text/css" href="{% static "css/cover.css" %}" />
+{% endblock %}
+
 {% block body_block %}
-    <div class="wrapper">
-                 <div class="container">
-<div class="row">
-    <div class="col-xs-12 col-sm-6 col-lg-6">
-        <div class="img-container">
-        <img src="{% static "images/klulogo.png" %}" height="250px" width="250px">
+    <div class="container">
+        <div class="row">
+            <div class="col-md-8 col-md-offset-2">
+                <div style="margin-top: 10px;" class="panel panel-default">
+                    <div class="panel-body">
+                       <form method="post" class="signup">
+                           <h2>Sign up for KLU15</h2>
+                                        {% csrf_token %}
+                                          {{ form|crispy }}
+                                <input type="submit" value="Sign Up" class="btn btn-info">
+                       </form>
+                            </p>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
     </div>
-    </div>
-    <div class="col-xs-12 col-sm-6 col-lg-6">
-        <h2>Join KLU15</h2>
-            <h4><strong>A massive online community of KLU.</strong></h4></br>
-  <form method="post">
-    {% csrf_token %}
-    {{ form|crispy }}
-    <button type="submit">Login</button>
-  </form>
-    </div>
-  </div>
-
-                 </div>
-    </div>
-
-    	<div class="navbar navbar-default navbar-fixed-bottom">
-						<div class="container">
-							<ul class="list-inline navbar-text pull-left">
-								<li>
-									<a href="">About Us</a>
-								</li>
-								<li>
-									<a href="">Help & FAQ</a>
-								</li>
-								<li>
-									<a href="">Contact Us</a>
-								</li>
-							</ul>
-							<a href="https://www.facebook.com/groups/klu15/" class="navbar-btn btn-primary btn pull-right">Get in touch on Facebook</a>
-						</div>
-					</div>
-
 {% endblock %}

@@ -23,30 +23,30 @@
 
      <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no">
 
-    <title>hackrsource.com: Find & Share the best tutorials, books, notes and online classes related to your topic among the community.</title>
+    <title>KLU15: A massive online community of kluniversity, where students can know what is happening in and around the campus, download their
+    course material, check results and manymore.</title>
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
     <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Roboto" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
+    {% block styles %}
+{% endblock %}
+
 </head>
-<nav class="navbar navbar-default navbar-custom">
-    <div class="container">
-        <!-- Brand and toggle get grouped for better mobile display -->
-        <div class="navbar-header">
-            <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
-                <span class="sr-only">Toggle navigation</span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-                <span class="icon-bar"></span>
-            </button>
+<body>
+    <nav style="background-color: #fff;" class="navbar navbar-default navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
+                </button>
             <a class="navbar-brand" href="/rango/">
                 <img src="{% static "images/black.png" %}">
             </a>
-        </div>
-        <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-            <ul class="nav navbar-nav navbar-right">
-                {% if user.is_authenticated %}
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                <ul class="nav navbar-nav navbar-right">
+                    {% if user.is_authenticated %}
                 <li>
                 {% block link_block %}
                     <a href="#" data-toggle="modal" data-target="#myModal2">+ Add a Category</a>
@@ -69,12 +69,10 @@
                     <a href="/rango/signup">Signup</a>
                 </li>
                 {% endif %}
-            </ul>
+                </ul>
+            </div>
         </div>
-    </div>
-</nav></br></br>
-
-<body>
+    </nav>
   {% block body_block %}{% endblock %}
 </body>
 </html>

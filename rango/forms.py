@@ -1,5 +1,5 @@
 from django import forms
-from rango.models import Category, Page, Noticeboard
+from rango.models import *
 from rango.choices import *
 
 
@@ -35,8 +35,10 @@ class PageForm(forms.ModelForm):
 
 
 class NoticeboardForm(forms.ModelForm):
-    notice = forms.CharField(max_length=500, help_text="Enter the notice to be posted here.")
+    notice = forms.CharField( max_length=500, help_text='Enter the notice to be posted here.')
+    post = forms.Textarea()
 
     class Meta:
         model = Noticeboard
         fields = ('notice',)
+
