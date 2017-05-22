@@ -17,7 +17,7 @@
 
 							<div class="panel panel-default">
 								<div class="panel-body">
-									<a href="#">{{ course.course_name }}-{{ course.course_code }}</a>
+									<a href="/rango/category/{{ course.slug }}">{{ course.course_name }}-{{ course.course_code }}</a>
 								</div>
 							</div>
 
@@ -26,7 +26,7 @@
                                      {% else %}
 
 
-							<strong>There are no departments</strong>
+							<strong>You aren't enrolled for any courses yet !</strong>
                                     {% endif %}
 
 

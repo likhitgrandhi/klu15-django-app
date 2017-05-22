@@ -45,17 +45,20 @@ def about(request):
     return HttpResponse("Hello this is rango about page </br> <a href='/rango/'>Rango</a>")
 
 
-def show_category(request, category_name_slug):
+def show_course(request, course_name_slug):
     context_dict = {}
 
     try:
-        category = Category.objects.get(slug=category_name_slug)
-        pages = Page.objects.filter(category=category)
+        student = StudentProfile.objects.filter(department__studentprofile__user=request.user.pk)
+        course = Course.objects.get(slug=course_name_slug)
+        pages = Page.objects.filter(course=course)
         context_dict['pages'] = pages
-        context_dict['category'] = category
-    except Category.DoesNotExist:
+        context_dict['course'] = course
+        context_dict['students'] = student
+    except Course.DoesNotExist:
         context_dict['pages'] = None
-        context_dict['category'] = None
+        context_dict['course'] = None
+        context_dict['students'] = None
     return render(request, 'rango/category.html', context_dict)
 
 
@@ -75,7 +78,7 @@ def add_page(request, category_name_slug):
                 page.views = 0
                 page.save()
                 # probably better to use a redirect here.
-            return show_category(request, category_name_slug)
+            return show_course(request, category_name_slug)
         else:
             print(form.errors)
 

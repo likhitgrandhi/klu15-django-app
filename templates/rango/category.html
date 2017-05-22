@@ -2,86 +2,87 @@
 {% load crispy_forms_tags %}
 {% load staticfiles %}
 
-{% block link_block %}<a href="{% url 'add_page' category.slug %}">+ Add a Link</a>{% endblock %}
+{% block link_block %}<a href="{% url 'add_page' course.slug %}">+ Add a Link</a>{% endblock %}
+
+
+{% block styles %}
+            <link rel="stylesheet" type="text/css" href="{% static "css/cover.css" %}" />
+{% endblock %}
 
 {% block body_block %}
-						<div class="container">
-						</br>
-						<div class="row">
-							<div class="col-md-8 col-md-offset-2">
-								<div>
-                                 {% if category %}
 
-                                     <h3>{{ category.name }}</h3></br>
 
-                                    {% if pages %}
-
-                                          {% for page in pages %}
-                                         <div class="panel panel-default">
-  <div class="panel-body">
-  <div class="wrapper">
+    <div style="margin-top: 15px; margin-bottom: 15px;" class="container">
     <div class="row">
-    <div class="col-lg-2 col-xs-2">
-    <center>
-    <div style="font-size: 24px; color:#aa2200;">
-<span class="glyphicon glyphicon-file" aria-hidden="true"></span>
+        <div class="col-md-3">
+            <div class="list-group">
+                <div class="list-group-item">
+                    <h4 class="list-group-item-heading"><a href="#" class="text-gray-dark">{{ user.get_username }}</a></h4>
+                    <p class="list-group-item-text"><a href="/@likhitgrandhi" class="text-muted">@ {{ user.get_username }}</a>
+                    </p>
+                </div>
+                {% if students %}
+                 {% for studentprofile in students %}
+                     <div class="list-group-item"><a href="/@likhitgrandhi"><small style="display: block;" class="text-muted">COLLEGE ID</small><strong>{{ studentprofile.registration_id }}</strong></a><a href="/@likhitgrandhi/followings"><small style="display: block; padding-top: 5px;" class="text-muted">DEPARTMENT</small><strong>{{ studentprofile.department }}</strong></a>
+                </div>
+                {% endfor %}
+            {% endif %}
+            </div>
+        </div>
+ <div class="col-md-9">
+            <ul class="list-group">
+                <li class="list-group-item">
+ {% if course %}
+                    <p style="margin-bottom: 0;" class="lead">{{ course.course_name }}-{{ course.course_code }}</p><a href="#"></a>
+               {% endif %}
+            </li>
+            <li>
+                 <table class="table table-striped">
+    <thead>
+      <tr>
+        <th>Module Name</th>
+        <th>Download</th>
+        <th>Date Uploaded</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+     <tr>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+     <tr>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+     <tr>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+     <tr>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+     <tr>
+        <td>-</td>
+        <td>-</td>
+        <td>-</td>
+      </tr>
+    </tbody>
+  </table>
+            </li>
+            </ul>
+        </div>
     </div>
-    </center>
-    </div>
-    <div class="col-lg-8 col-xs-8">
-<h4>{{ page.title }}</h4>
-    </div>
-    <div class="col-lg-2 col-xs-2">
-    <center>
-    <div style="font-size: 24px;">
-        <a href="{{ page.url }}"><span class="glyphicon glyphicon-arrow-down" aria-hidden="true"></span></a>
-    </div>
-    </center>
-    </div>
-  </div>
 </div>
-
-
-</div>
-
-</div>
-                                     {% endfor %}
-
-
-                                        {% else %}
-
-									<strong>There are no categories</strong>
-
-                                    {% endif %}
-
-                                     {% else %}
-
-                                         <strong> The specified category does not exist</strong>
-
-                                     {% endif %}
-
-								</div>
-							</div>
-						</div>
-
-
-					</div>
-					<div class="navbar navbar-default navbar-fixed-bottom">
-						<div class="container">
-							<ul class="list-inline navbar-text pull-left">
-								<li>
-									<a href="">About Us</a>
-								</li>
-								<li>
-									<a href="">Help & FAQ</a>
-								</li>
-								<li>
-									<a href="">Contact Us</a>
-								</li>
-							</ul>
-							<a href="https://www.facebook.com/groups/klu15/" class="navbar-btn btn-primary btn pull-right">Get in touch on Facebook</a>
-						</div>
-					</div>
 
 {% endblock %}
 
