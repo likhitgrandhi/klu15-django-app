@@ -17,9 +17,9 @@
                     <p class="list-group-item-text"><a href="/@likhitgrandhi" class="text-muted">@ {{ user.get_username }}</a>
                     </p>
                 </div>
-                {% if students %}
-                 {% for studentprofile in students %}
-                     <div class="list-group-item"><a href="/@likhitgrandhi"><small style="display: block;" class="text-muted">COLLEGE ID</small><strong>{{ studentprofile.registration_id }}</strong></a><a href="/@likhitgrandhi/followings"><small style="display: block; padding-top: 5px;" class="text-muted">DEPARTMENT</small><strong>{{ studentprofile.department }}</strong></a>
+{% if department %}
+                            {% for department in department %}
+                     <div class="list-group-item"><a href="/@likhitgrandhi"><small style="display: block;" class="text-muted">DEPARTMENT</small><strong>{{ department.name }}</strong></a><a href="/@likhitgrandhi/followings"><small style="display: block; padding-top: 5px;" class="text-muted">BATCH</small><strong>{{ department.batch }}</strong></a>
                 </div>
                 {% endfor %}
             {% endif %}

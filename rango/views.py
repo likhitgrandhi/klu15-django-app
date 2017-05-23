@@ -17,7 +17,7 @@ def signup(request):
             raw_password = form.cleaned_data.get('password1')
             user = authenticate(username=username, password=raw_password)
             login(request, user)
-            return redirect('rango/index.html')
+            return redirect('/rango/noticeboard/')
     else:
         form = UserCreationForm()
     return render(request, 'rango/signup.html', {'form': form})
@@ -89,11 +89,13 @@ def add_page(request, category_name_slug):
 
 @login_required(login_url='/rango/login')
 def show_notices(request):
+    department = Department.objects.filter(studentprofile__user=request.user.pk)
     form = NoticeboardForm()
     course_list = Course.objects.filter(department__studentprofile__user=request.user.pk)
     student = StudentProfile.objects.filter(department__studentprofile__user=request.user.pk)
     notice_list = Noticeboard.objects.all()
-    context_dict = {'notices': notice_list, 'form': form, 'username': request.user.username, 'courses': course_list, 'students': student}
+    context_dict = { 'department': department, 'notices': notice_list, 'form': form, 'username': request.user.username, 'courses': course_list,
+                    'student': student,}
 
     if request.method == 'POST':
         form = NoticeboardForm(request.POST)
