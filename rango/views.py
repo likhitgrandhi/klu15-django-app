@@ -49,12 +49,12 @@ def show_course(request, course_name_slug):
     context_dict = {}
 
     try:
-        student = StudentProfile.objects.filter(department__studentprofile__user=request.user.pk)
+        department = Department.objects.filter(studentprofile__user=request.user.pk)
         course = Course.objects.get(slug=course_name_slug)
         pages = Page.objects.filter(course=course)
         context_dict['pages'] = pages
         context_dict['course'] = course
-        context_dict['students'] = student
+        context_dict['department'] = department
     except Course.DoesNotExist:
         context_dict['pages'] = None
         context_dict['course'] = None

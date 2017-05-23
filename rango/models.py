@@ -8,6 +8,7 @@ from rango.choices import *
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from multiselectfield import MultiSelectField
+from django.db import models
 # Create your models here.
 
 
@@ -33,8 +34,7 @@ class Department(models.Model):
     def __str__(self):
         return self.name + '-' + self.batch
 
-class DepartmentAdmin(admin.ModelAdmin):
-    list_display = ('name', 'batch')
+
 
 class StudentProfile(models.Model):
     user = models.ForeignKey(User, on_delete=models.CASCADE)
@@ -45,7 +45,7 @@ class StudentProfile(models.Model):
     def __str__(self):
         return self.registration_id
 
-class StudentProfileAdmin(admin.ModelAdmin):
+class StudentProfileExtra(admin.ModelAdmin):
     list_display = ('user', 'registration_id', 'department')
 
 
