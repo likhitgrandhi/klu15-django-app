@@ -26,7 +26,7 @@ def signup(request):
 @login_required(login_url='/rango/login')
 def index(request):
     course_list = Course.objects.filter(department__studentprofile__user=request.user.pk)
-    form = CategoryForm()
+    form = ()
     context_dict = {'courses': course_list, 'form': form}
 
     if request.method == 'POST':
@@ -40,6 +40,21 @@ def index(request):
 
     return render(request, 'rango/index.html', context_dict)
 
+@login_required(login_url='/rango/login')
+def register(request):
+    form = ()
+    context_dict = {'form': form}
+    if request.method == 'POST':
+        form = DepartmentForm(request.POST)
+        if form.is_valid():
+            form = form.save(commit=False)
+            form.user = request.user
+            form.save()
+            return redirect("/rango/noticeboard/")
+        else:
+            print(form.errors)
+
+    return render(request, 'rango/register.html', context_dict )
 
 def about(request):
     return HttpResponse("Hello this is rango about page </br> <a href='/rango/'>Rango</a>")
@@ -49,12 +64,12 @@ def show_course(request, course_name_slug):
     context_dict = {}
 
     try:
-        department = Department.objects.filter(studentprofile__user=request.user.pk)
+        student = StudentProfile.objects.filter(department__studentprofile__user=request.user.pk)
         course = Course.objects.get(slug=course_name_slug)
         pages = Page.objects.filter(course=course)
         context_dict['pages'] = pages
         context_dict['course'] = course
-        context_dict['department'] = department
+        context_dict['students'] = student
     except Course.DoesNotExist:
         context_dict['pages'] = None
         context_dict['course'] = None
@@ -94,8 +109,9 @@ def show_notices(request):
     course_list = Course.objects.filter(department__studentprofile__user=request.user.pk)
     student = StudentProfile.objects.filter(department__studentprofile__user=request.user.pk)
     notice_list = Noticeboard.objects.all()
-    context_dict = { 'department': department, 'notices': notice_list, 'form': form, 'username': request.user.username, 'courses': course_list,
-                    'student': student,}
+    context_dict = {'department': department, 'notices': notice_list, 'form': form, 'username': request.user.username,
+                    'courses': course_list,
+                    'student': student, }
 
     if request.method == 'POST':
         form = NoticeboardForm(request.POST)

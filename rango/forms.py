@@ -42,3 +42,13 @@ class NoticeboardForm(forms.ModelForm):
         model = Noticeboard
         fields = ('notice',)
 
+
+class DepartmentForm(forms.ModelForm):
+
+    name = forms.CharField(max_length=100,)
+    batch = forms.CharField(max_length=100,)
+
+    class Meta:
+        model = Department
+        fields = ('name', 'batch',)
+

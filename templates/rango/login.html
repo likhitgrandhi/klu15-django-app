@@ -1,35 +1,59 @@
-{% extends 'rango/base.html' %}
-{% load crispy_forms_tags %}
-{% load staticfiles %}
+    {% extends 'rango/base.html' %}
+    {% load crispy_forms_tags %}
+    {% load staticfiles %}
+    {% load app_filters %}
+
 
 {% block styles %}
             <link rel="stylesheet" type="text/css" href="{% static "css/cover.css" %}" />
-
+            <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
 {% endblock %}
 
+{% block navbar_image %}
+                <img src="{% static "images/black.png" %}">
+                {% endblock %}
+
 {% block body_block %}
-     <div class="container">
-        <div class="row">
-            <div class="col-md-8 col-md-offset-2">
-                <div style="margin-top: 10px;" class="panel panel-default">
-                    <div class="panel-body">
-                        <form method="post" class="login">
-                            <h2>Login to KLU15</h2>
+
+
+<div class="site-wrapper">
+
+        <div class="site-wrapper-inner" style="background: url('{% static "images/mars.jpg" %}');
+        background-repeat: no-repeat;
+        background-size: cover;
+        ">
+            <div class="cover-container">
+                <div class="inner cover">
+                    <div class="row">
+                        <div class="col-md-6">
+                            <h1 class="cover-heading" style="font-weight: 700;">Welcome to KLU15</h1>
+                            <p class="lead" style="font-weight: 700;">Connect with your friends — and other fascinating people. Get in-the-moment updates on the things that interest you. And watch events unfold, in real time, from every angle.</p>
+                        </div>
+                        <div class="col-md-6">
+                            <div style="margin-top: 30px;" class="panel panel-default">
+                                <div class="panel-body">
+                                         <form method="post" class="login" style="color: black;">
                            {% csrf_token %}
                                           {{ form|crispy }}
                             <p>
                                  <button type="submit" class="btn btn-info">Login</button>
                             </p>
                         </form>
-                    </div>
-                    <div class="panel-footer">
-                        <div class="login">
-                            <p style="margin-top: 10px;">New to KLU15? <a href="/signup">Sign up now »</a>
-                            </p>
+                                </div>
+                            </div>
                         </div>
                     </div>
+                </div>
+                <div class="mastfoot">
+                    <div class="inner">
+                        <p>This application is written in python, created by <a href="https://facebook.com/klu15">@klu15</a></div>
                 </div>
             </div>
         </div>
     </div>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+    <script src="/js/lib/bootstrap/bootstrap.min.js"></script>
+
+
 {% endblock %}
+

@@ -17,10 +17,9 @@ from django.conf.urls import include, url
 from django.contrib import admin
 from hackrsource.views import hello
 from rango import views
-	
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
-    url(r'^hello/$', hello),
+    url(r'^$', include('rango.urls')),
     url(r'^rango/', include('rango.urls')),
-    ]
+]

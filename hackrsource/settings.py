@@ -42,8 +42,7 @@ INSTALLED_APPS = [
     'crispy_forms',
     'multiselectfield',
     'django_filters',
-    'import_export',
-
+    'import_export'
 ]
 
 MIDDLEWARE = [
@@ -53,7 +52,7 @@ MIDDLEWARE = [
     'django.middleware.csrf.CsrfViewMiddleware',
     'django.contrib.auth.middleware.AuthenticationMiddleware',
     'django.contrib.messages.middleware.MessageMiddleware',
-    'django.middleware.clickjacking.XFrameOptionsMiddleware'
+    'django.middleware.clickjacking.XFrameOptionsMiddleware',
 ]
 
 ROOT_URLCONF = 'hackrsource.urls'
@@ -69,13 +68,10 @@ TEMPLATES = [
                 'django.template.context_processors.request',
                 'django.contrib.auth.context_processors.auth',
                 'django.contrib.messages.context_processors.messages',
-
             ],
         },
     },
 ]
-
-
 
 WSGI_APPLICATION = 'hackrsource.wsgi.application'
 
@@ -96,9 +92,6 @@ DATABASES = {
 AUTH_PASSWORD_VALIDATORS = [
     {
         'NAME': 'django.contrib.auth.password_validation.UserAttributeSimilarityValidator',
-    },
-    {
-        'NAME': 'django.contrib.auth.hashers',
     },
     {
         'NAME': 'django.contrib.auth.password_validation.MinimumLengthValidator',

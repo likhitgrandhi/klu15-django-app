@@ -30,18 +30,21 @@
     <link href="https://fonts.googleapis.com/css?family=Gochi+Hand|Roboto" rel="stylesheet">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+     <script src="{% static "js/jquery.chocolate.js" %}"></script>
     {% block styles %}
 {% endblock %}
 
 </head>
 <body>
-    <nav style="background-color: #fff;" class="navbar navbar-default navbar-fixed-top">
+    <nav style="background-color: #fff;" class="navbar navbar-default navbar-custom navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
                 <button type="button" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar" class="navbar-toggle collapsed"><span class="sr-only">Toggle navigation</span><span class="icon-bar"></span><span class="icon-bar"></span><span class="icon-bar"></span>
                 </button>
             <a class="navbar-brand" href="/rango/noticeboard">
+                {% block navbar_image %}
                 <img src="{% static "images/black.png" %}">
+                {% endblock %}
             </a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
@@ -59,14 +62,12 @@
                     <li>
                     <a href="/rango/noticeboard">Notice-Board</a>
                 </li>
-                    <li>
-                    <a href="#">Results</a>
-                </li>
                 <li>
                     <a href="/rango/login">Login</a>
                 </li>
+                <!--
                     <li>
-                    <a href="/rango/signup">Signup</a>
+                    <a href="/rango/signup">Signup</a> -->
                 </li>
                 {% endif %}
                 </ul>

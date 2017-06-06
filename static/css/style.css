@@ -46,6 +46,9 @@ body {
 
 /* Extra markup and styles for table-esque vertical and horizontal centering */
 .site-wrapper {
+ 
+  background-size: cover;
+  background-repeat: no-repeat;
   display: table;
   width: 100%;
   height: 100%; /* For at least Firefox */
