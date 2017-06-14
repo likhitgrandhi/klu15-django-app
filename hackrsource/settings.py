@@ -42,7 +42,6 @@ INSTALLED_APPS = [
     'crispy_forms',
     'multiselectfield',
     'django_filters',
-    'import_export'
 ]
 
 MIDDLEWARE = [
