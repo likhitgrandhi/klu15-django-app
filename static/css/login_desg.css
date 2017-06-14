@@ -1,0 +1,51 @@
+.container{
+  padding-top: 50px;
+}
+
+nav{
+    height: 65px;
+}
+
+nav .nav-wrapper{
+    padding-right: 200px;
+}
+
+
+nav .nav-wrapper ul li a{
+    color: #2196f3;
+    padding-left: 40px;
+    padding-top:3px;
+     font-size: 16px;
+    font-weight: 400;
+}
+nav .nav-wrapper ul li a:hover{
+    background: #fff;
+
+}
+
+ h2{
+  font-family: 'Shadows Into Light Two', cursive;
+font-weight: 500;
+font-size: 72px;
+color: #47525d;
+letter-spacing: -0.007em;
+letter-spacing: 2px;
+line-height: 62px;
+margin-bottom: 20px;
+margin-top: 28px;
+}
+
+p{
+  
+     color: #3d464d;
+    font-size: 26px;
+    font-weight: 300;
+    line-height: 40px;
+    letter-spacing: -0.02em;
+    margin-top: 15px;
+}
+
+.row .login-col{
+  padding-top: 20px;
+  padding-left: 36px;
+}

@@ -57,7 +57,7 @@
                     <p style="margin-bottom: 0;" class="lead">Enrolled Courses</p><a href="#">View all</a>
                   {% if courses %}
                             {% for course in courses %}
-                    <li class="list-group-item"><a href="/rango/category/{{ course.slug }}" class="text-gray-dark"><strong>{{ course.course_name }}</strong><span>&nbsp;</span></a>
+                    <li class="list-group-item"><a href="/rango/course/{{ course.slug }}" class="text-gray-dark"><strong>{{ course.course_name }}</strong><span>&nbsp;</span></a>
                     </li>
                 {% endfor %}
             {% endif %}

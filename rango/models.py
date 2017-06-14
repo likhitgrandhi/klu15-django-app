@@ -5,27 +5,12 @@ from django.contrib import admin
 from django.contrib.auth.models import User
 from django.template.defaultfilters import slugify
 from rango.choices import *
+from django.utils import timezone
 from django.db.models.signals import post_save
 from django.dispatch import receiver
 from multiselectfield import MultiSelectField
 from django_thumbs.db.models import ImageWithThumbsField
 # Create your models here.
-
-
-class Category(models.Model):
-    name = models.CharField(max_length=128, unique=True)
-    slug = models.SlugField(unique=True)
-
-    def save(self, *args, **kwargs):
-        self.slug = slugify(self.name)
-        super(Category, self).save(*args, **kwargs)
-
-    class Meta:
-        verbose_name_plural = 'categories'
-
-    def __str__(self):
-        return self.name
-
 
 class Department(models.Model):
     name = models.CharField(max_length=100, choices=DEPARTMENTS_CHOICES, default="")
@@ -70,9 +55,9 @@ class Course(models.Model):
 
 
 class Page(models.Model):
-    category = models.ForeignKey(Category)
     course = models.ForeignKey(Course, default="")
     title = models.CharField(max_length=128)
+    updated_at = models.DateTimeField(default=timezone.now)
     url = models.URLField()
     views = models.IntegerField(default=0)
 
@@ -82,7 +67,7 @@ class Page(models.Model):
 
 
 class PageAdmin(admin.ModelAdmin):
-    list_display = ('title', 'category', 'course',)
+    list_display = ('title', 'course',)
 
 
 

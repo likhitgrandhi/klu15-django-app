@@ -29,15 +29,6 @@ def index(request):
     form = ()
     context_dict = {'courses': course_list, 'form': form}
 
-    if request.method == 'POST':
-        form = CategoryForm(request.POST)
-
-        if form.is_valid():
-            form.save(commit=True)
-            return index(request)
-        else:
-            print(form.errors)
-
     return render(request, 'rango/index.html', context_dict)
 
 @login_required(login_url='/rango/login')
@@ -65,39 +56,42 @@ def show_course(request, course_name_slug):
 
     try:
         student = StudentProfile.objects.filter(department__studentprofile__user=request.user.pk)
+        course_list = Course.objects.filter(department__studentprofile__user=request.user.pk)
         course = Course.objects.get(slug=course_name_slug)
         pages = Page.objects.filter(course=course)
+        context_dict['courses'] = course_list
         context_dict['pages'] = pages
         context_dict['course'] = course
         context_dict['students'] = student
     except Course.DoesNotExist:
+        context_dict['courses'] = None
         context_dict['pages'] = None
         context_dict['course'] = None
         context_dict['students'] = None
-    return render(request, 'rango/category.html', context_dict)
+    return render(request, 'rango/course.html', context_dict)
 
 
-def add_page(request, category_name_slug):
+def add_page(request, course_name_slug):
     try:
-        category = Category.objects.get(slug=category_name_slug)
-    except Category.DoesNotExist:
-        category = None
+        course = Course.objects.get(slug=course_name_slug)
+    except Course.DoesNotExist:
+        course = None
 
     form = PageForm()
     if request.method == 'POST':
         form = PageForm(request.POST)
         if form.is_valid():
-            if category:
+            if course:
                 page = form.save(commit=False)
-                page.category = category
+                page.course = course
                 page.views = 0
                 page.save()
                 # probably better to use a redirect here.
-            return show_course(request, category_name_slug)
+            return show_course(request, course_name_slug)
         else:
             print(form.errors)
 
-    context_dict = {'form': form, 'category': category}
+    context_dict = {'form': form, 'course': course}
 
     return render(request, 'rango/add_page.html', context_dict)
 

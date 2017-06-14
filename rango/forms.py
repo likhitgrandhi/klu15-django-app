@@ -4,14 +4,6 @@ from rango.choices import *
 
 
 
-class CategoryForm(forms.ModelForm):
-    name = forms.CharField(max_length=128, help_text="Enter the category name.")
-    slug = forms.CharField(widget=forms.HiddenInput(), required=False)
-
-    class Meta:
-        model = Category
-        fields = ('name',)
-
 class PageForm(forms.ModelForm):
 
     title = forms.CharField(max_length=128, help_text="Enter the title of the link here.")
@@ -31,7 +23,7 @@ class PageForm(forms.ModelForm):
 
     class Meta:
         model = Page
-        exclude = ('category',)
+        exclude = ('course',)
 
 
 class NoticeboardForm(forms.ModelForm):

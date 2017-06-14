@@ -1,55 +1,46 @@
-    {% extends 'rango/base.html' %}
-    {% load crispy_forms_tags %}
+{% load crispy_forms_tags %}
     {% load staticfiles %}
     {% load app_filters %}
 
 
-{% block styles %}
-            <link rel="stylesheet" type="text/css" href="{% static "css/cover.css" %}" />
-            <link rel="stylesheet" type="text/css" href="{% static "css/style.css" %}" />
-{% endblock %}
+  <!DOCTYPE html>
+  <html>
+    <head>
+      <!--Import Google Icon Font-->
+      <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
+      <!--Import materialize.css-->
+      <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/css/materialize.min.css">
 
- {% block navbar_image %}
-                <img src="{% static "images/black.png" %}">
-                {% endblock %}
+      <!--Let browser know website is optimized for mobile-->
+      <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+      <script>$('.button-collapse').sideNav('show');</script>
+    </head>
 
-{% block body_block %}
+    <body>
 
-<div class="site-wrapper">
-        <div class="site-wrapper-inner">
-            <div class="cover-container">
-                <div class="inner cover">
-                    <div class="row">
-                        <div class="col-md-6">
-                            <h1 class="cover-heading">Welcom to Twitter.</h1>
-                            <p class="lead">Connect with your friends — and other fascinating people. Get in-the-moment updates on the things that interest you. And watch events unfold, in real time, from every angle.</p>
-                        </div>
-                        <div class="col-md-6">
-                            <div style="margin-top: 30px;" class="panel panel-default">
-                                <div class="panel-body">
-                                         <form method="post" class="login">
-                            <h2>Login to KLU15</h2>
-                           {% csrf_token %}
-                                          {{ form|crispy }}
-                            <p>
-                                 <button type="submit" class="btn btn-info">Login</button>
-                            </p>
-                        </form>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <div class="mastfoot">
-                    <div class="inner">
-                        <p>This application is a very simple Twitter clone written in Node and Redis, created by <a href="https://github.com/tatsuyaoiw">@tatsuyaoiw</a>. Code is available at <a href="https://github.com/tatsuyaoiw/twitter">Github</a>.</p>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
-    <script src="/js/lib/bootstrap/bootstrap.min.js"></script>
 
-{% endblock %}
+          <ul class="side-nav fixed" style="font-weight:300; background: #f7f9fa; color:#637282; padding-top: 50px;">
 
+    <li><div class="userView">
+
+      <a href="/rango/"><img src="{% static 'images/icons/15team_logo_48x48.png' %}"></a>
+    </div></li>
+    <li><a class="subheader">My Courses</a></li>
+    <li><div class="divider"></div></li>
+              {% if courses %}
+                  {% for course in courses %}
+    <li><a href="/rango/course/{{ course.slug }}">{{ course.course_name }}</a></li>
+     {% endfor %}
+            {% endif %}
+  </ul>
+
+  <a href="#" data-activates="slide-out" class="button-collapse show-on-large"><i class="material-icons">menu</i></a>
+{% block content %}
+          {% endblock %}
+      <!--Import jQuery before materialize.js-->
+
+      <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.98.2/js/materialize.min.js"></script>
+    </body>
+  </html>
