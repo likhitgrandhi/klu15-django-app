@@ -7,3 +7,5 @@ django-filter==1.0.4
 django-filters==0.2.1
 django-multiselectfield==0.1.7
 pytz==2017.2
+psycopg2==2.6.1
+dj-static==0.0.6
