@@ -14,10 +14,9 @@ import os
 
 # Build paths inside the project like this: os.path.join(BASE_DIR, ...)
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-PROJECT_ROOT = os.path.dirname(os.path.abspath(__file__))
 TEMPLATE_DIR = os.path.join(BASE_DIR, 'templates')
 STATIC_DIR = os.path.join(BASE_DIR, 'static')
-STATIC_ROOT = os.path.join(PROJECT_ROOT, 'staticfiles')
+STATIC_ROOT = '/'
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/1.11/howto/deployment/checklist/
 
@@ -27,7 +26,11 @@ SECRET_KEY = '%e1m6fy$^yij6$q1#@&5*(--%*2z8d11f3+c&18u4k6+-xld0s'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
+<<<<<<< HEAD
+ALLOWED_HOSTS = ['likhitgrandhi15.pythonanywhere.com']
+=======
 ALLOWED_HOSTS = ['klu15.herokuapp.com']
+>>>>>>> 994b2af792e72017d42cc4a4e0ffe2a1482870c4
 
 # Application definition
 
@@ -120,7 +123,7 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/1.11/howto/static-files/
 
-STATICFILES_DIRS = [STATIC_ROOT,]
+STATICFILES_DIRS = [STATIC_DIR,]
 STATIC_URL = '/static/'
 
 LOGIN_REDIRECT_URL = '/rango/'

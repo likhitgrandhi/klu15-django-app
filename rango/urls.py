@@ -3,7 +3,7 @@ from django.contrib.auth import views as auth_views
 from rango import views
 
 urlpatterns = [
-    url(r'^$', views.index),
+    url(r'^', views.index),
     url(r'^login/$', auth_views.login, {'template_name':'rango/login.html'}, name='login'),
     url(r'^logout/$', auth_views.logout, name='logout'),
     url(r'^signup/$', views.signup, name='signup'),

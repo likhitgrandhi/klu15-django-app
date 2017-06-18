@@ -1,1 +1,1 @@
-web: gunicorn hackrsource.wsgi --log-file -
+web: gunicorn hackrsource.wsgi
